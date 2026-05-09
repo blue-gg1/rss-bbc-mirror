@@ -1,5 +1,6 @@
 import requests, os
 from settings import LiveUrl, BaseUrl, Disclosure, LiveImageUrl
+from datetime import date, datetime
 
 
 print(requests.get(BaseUrl, verify=False).content)
@@ -29,7 +30,7 @@ def MakeXml(Mp3Url):
         <itunes:category text="News &amp; Politics"/>
         <itunes:explicit>true</itunes:explicit>
         <ttl>69420</ttl>"""
-    PodcastEpisodeTitle = str(abs(i-EpisodesInJson))+" "+RawJson["podcast"]["episodes"][i]["title"]
+    PodcastEpisodeTitle = datetime.now()
     PodcastEpisodeNotes = RawJson["podcast"]["episodes"][i]["show_notes"]
     PodcastEpisodePatUrl = RawJson["podcast"]["episodes"][i]["url"]
     PodcastEpisodeFileName = str(abs(i-EpisodesInJson)) + " " + PodcastEpisodeTitle.strip() + ".mp3"
@@ -47,8 +48,6 @@ def MakeXml(Mp3Url):
     <enclosure url="$TemplateUrl" type="audio/mpeg"/>
     </item>\r\n""")
 
-
-    # print(ExampleRssFromBBC)
     ReadTemplateRss = ExampleRssFromBBC.substitute(
     TemplateTitle = PodcastEpisodeTitle.replace("&","&amp;"),
     # TemplateDescription = (PodcastEpisodeNotes.replace("&","&amp;")),
