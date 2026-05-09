@@ -5,14 +5,10 @@ from datetime import date, datetime
 def FetchXml(Url):
     return str(requests.get(Url, verify=False).content)
 
+# def PullMp3FromXml(SourceXml):
+#     return re.findall("https...open.live.bbc.co.uk.*mp3", SourceXml)
 
-def PullMp3FromXml(SourceXml):
-    Mp3Url = re.findall("https...open.live.bbc.co.uk.*mp3", SourceXml)
-    print(Mp3Url)
-    pass
-
-
-def MakeXml(Mp3Url):
+def MakeXml(SourceXml, ImageUrl):
     pass
 
 def AddFilesToGit():
