@@ -11,7 +11,10 @@ def FetchXml(Url):
 def MakeXml(SourceXml, ImageUrl):
     # print(re.sub("https...open.live.bbc.co.uk.*mp3", "test" ,SourceXml))
     
-    print(re.sub(".*", "test" ,SourceXml))
+    # print(re.sub("https...ichef.bbci.co.uk.*jpg", "test" ,SourceXml))
+    XmlNewImage = re.sub("https...ichef.*jpg", "fuck" , SourceXml)
+    XmlNewTitle = re.sub("BBC News","BBC News (Mirror)", XmlNewImage)
+    print(XmlNewTitle)
 
 def AddFilesToGit():
     print("making the git commit")
