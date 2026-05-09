@@ -3,7 +3,7 @@ from settings import LiveUrl, BaseUrl, Disclosure, LiveImageUrl
 from datetime import date, datetime
 
 def FetchXml(Url):
-    return str(requests.get(Url, verify=False).content)
+    return (requests.get(Url, verify=False).content)
 
 # def PullMp3FromXml(SourceXml):
 #     return re.findall("https...open.live.bbc.co.uk.*mp3", SourceXml)
