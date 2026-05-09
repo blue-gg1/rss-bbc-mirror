@@ -9,7 +9,9 @@ def FetchXml(Url):
 #     return re.findall("https...open.live.bbc.co.uk.*mp3", SourceXml)
 
 def MakeXml(SourceXml, ImageUrl):
-    pass
+    # print(re.sub("https...open.live.bbc.co.uk.*mp3", "test" ,SourceXml))
+    
+    print(re.sub(".*", "test" ,SourceXml))
 
 def AddFilesToGit():
     print("making the git commit")
@@ -20,4 +22,4 @@ def AddFilesToGit():
 
 
 SourceXml = FetchXml(BaseUrl)
-PullMp3FromXml(SourceXml)
+MakeXml(SourceXml, LiveImageUrl)
