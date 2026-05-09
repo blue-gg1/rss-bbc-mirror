@@ -5,17 +5,17 @@ from datetime import date, datetime
 def FetchXml(Url):
     return (requests.get(Url, verify=False).content).decode()
 
-# def PullMp3FromXml(SourceXml):
-#     return re.findall("https...open.live.bbc.co.uk.*mp3", SourceXml)
-
 def MakeXml(SourceXml, ImageUrl):
     # print(re.sub("https...open.live.bbc.co.uk.*mp3", "test" ,SourceXml))
-    
     # print(re.sub("https...ichef.bbci.co.uk.*jpg", "test" ,SourceXml))
+
+
     XmlNewImage = re.sub("https...ichef.*jpg", LiveImageUrl , SourceXml)
     XmlNewTitle = re.sub("BBC News","BBC News (Mirror)", XmlNewImage)
-    print(XmlNewTitle)
-    FinalXml = XmlNewTitle
+    XmlPodTitle = re.sub("T<.title>","T (Mirror)</title>", XmlNewImage)
+    
+
+    FinalXml = XmlPodTitle
     return FinalXml
 
 def WriteToDisk(Xml):
