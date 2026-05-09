@@ -15,6 +15,15 @@ def MakeXml(SourceXml, ImageUrl):
     XmlNewImage = re.sub("https...ichef.*jpg", LiveImageUrl , SourceXml)
     XmlNewTitle = re.sub("BBC News","BBC News (Mirror)", XmlNewImage)
     print(XmlNewTitle)
+    FinalXml = XmlNewTitle
+    return FinalXml
+
+def WriteToDisk(Xml):
+    FilePath = str(os.getcwd()) + "/index.html"
+    with open(FilePath, "w",) as XmlFile:
+        XmlFile.write(Xml)
+
+
 
 def AddFilesToGit():
     print("making the git commit")
@@ -25,4 +34,6 @@ def AddFilesToGit():
 
 
 SourceXml = FetchXml(BaseUrl)
-MakeXml(SourceXml, LiveImageUrl)
+XmlToWrite = MakeXml(SourceXml, LiveImageUrl)
+WriteToDisk(XmlToWrite)
+AddFilesToGit()
