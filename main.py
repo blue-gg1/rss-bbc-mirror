@@ -7,7 +7,7 @@ def FetchXml(Url):
 
 
 def PullMp3FromXml(SourceXml):
-    Mp3Url = re.findall("http.*mp3", SourceXml)
+    Mp3Url = re.findall("https...open.live.bbc.co.uk.*mp3", SourceXml)
     print(Mp3Url)
     pass
 
