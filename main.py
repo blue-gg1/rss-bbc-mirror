@@ -1,16 +1,17 @@
 import requests, os, re
-from settings import LiveUrl, BaseUrl, LiveImageUrl
+from settings import LiveUrl, BaseUrl, LiveImageUrl, Disclosure
 from datetime import datetime
 def FetchXml(Url):
     return (requests.get(Url, verify=False).content).decode()
 
-def MakeXml(SourceXml, ImageUrl):
+def MakeXmlFilters(SourceXml, ImageUrl):
     XmlNewImage = re.sub("https...ichef.*jpg", LiveImageUrl , SourceXml)
     XmlNewTitle = re.sub("BBC News","BBC News (Mirror)", XmlNewImage)
     XmlPodTitle = re.sub("T<.title>","T (Mirror)</title>", XmlNewTitle)
     XmlPodCurse = re.sub("clean","fuck", XmlPodTitle)
+    XmlDisclosure = re.sub("The latest five minute news bulletin from BBC World Service.",Disclosure +" The latest five minute news bulletin from BBC World Service.", XmlPodCurse)
     
-    FinalXml = XmlPodCurse
+    FinalXml = XmlDisclosure
     return FinalXml
 
 def WriteToDisk(Xml):
@@ -27,6 +28,6 @@ def AddFilesToGit():
 
 
 SourceXml = FetchXml(BaseUrl)
-XmlToWrite = MakeXml(SourceXml, LiveImageUrl)
+XmlToWrite = MakeXmlFilters(SourceXml, LiveImageUrl)
 WriteToDisk(XmlToWrite)
 AddFilesToGit()
