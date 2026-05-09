@@ -1,6 +1,6 @@
 import requests, os, re
 from settings import LiveUrl, BaseUrl, LiveImageUrl
-
+from datetime import datetime
 def FetchXml(Url):
     return (requests.get(Url, verify=False).content).decode()
 
@@ -19,10 +19,10 @@ def WriteToDisk(Xml):
 
 def AddFilesToGit():
     print("making the git commit")
-    GitCommitMessage = "Live now at" + LiveUrl
+    GitCommitMessage = str(datetime.now())+ ". Live now at " + LiveUrl
     print(os.system("git add ."))
     print(os.system("git commit -am "+chr(34)+GitCommitMessage+chr(34)))
-    # print(os.system("git push"))
+    print(os.system("git push"))
 
 
 SourceXml = FetchXml(BaseUrl)
