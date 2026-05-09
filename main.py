@@ -12,7 +12,7 @@ def MakeXml(SourceXml, ImageUrl):
 
     XmlNewImage = re.sub("https...ichef.*jpg", LiveImageUrl , SourceXml)
     XmlNewTitle = re.sub("BBC News","BBC News (Mirror)", XmlNewImage)
-    XmlPodTitle = re.sub("T<.title>","T (Mirror)</title>", XmlNewImage)
+    XmlPodTitle = re.sub("T<.title>","T (Mirror)</title>", XmlNewTitle)
     
 
     FinalXml = XmlPodTitle
