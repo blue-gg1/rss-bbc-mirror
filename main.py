@@ -9,7 +9,9 @@ def MakeXmlFilters(SourceXml, ImageUrl):
     XmlNewTitle = re.sub("BBC News","BBC News (Mirror)", XmlNewImage)
     XmlPodTitle = re.sub("T<.title>","T (Mirror)</title>", XmlNewTitle)
     XmlPodCurse = re.sub("clean","fuck", XmlPodTitle)
-    XmlDisclosure = re.sub("The latest five minute news bulletin from BBC World Service.",Disclosure +" The latest five minute news bulletin from BBC World Service.", XmlPodCurse)
+    XmlPodCurse2 = re.sub("<itunes:explicit>no<.itunes:explicit>","<itunes:explicit>fuck</itunes:explicit>", XmlPodCurse)
+
+    XmlDisclosure = re.sub("The latest five minute news bulletin from BBC World Service.",Disclosure +" The latest five minute news bulletin from BBC World Service.", XmlPodCurse2)
     
     FinalXml = XmlDisclosure
     return FinalXml
