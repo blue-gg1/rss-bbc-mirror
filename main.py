@@ -12,7 +12,7 @@ def MakeXml(SourceXml, ImageUrl):
     # print(re.sub("https...open.live.bbc.co.uk.*mp3", "test" ,SourceXml))
     
     # print(re.sub("https...ichef.bbci.co.uk.*jpg", "test" ,SourceXml))
-    XmlNewImage = re.sub("https...ichef.*jpg", "fuck" , SourceXml)
+    XmlNewImage = re.sub("https...ichef.*jpg", LiveImageUrl , SourceXml)
     XmlNewTitle = re.sub("BBC News","BBC News (Mirror)", XmlNewImage)
     print(XmlNewTitle)
 
